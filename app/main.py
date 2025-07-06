@@ -64,10 +64,10 @@ df_top_cast.columns = ['actor', 'count']
 
 with pd.ExcelWriter("disney_data_summary.xlsx", engine="openpyxl") as writer:
     df_type_count.to_excel(writer, sheet_name="Tipo_Contenido", index=False)
-    df_country_top.to_excel(writer, sheet_name="Top_Paises", index=False)
-    df_added_by_year.to_excel(writer, sheet_name="Contenido_Por_Año", index=False)
-    df_rating_count.to_excel(writer, sheet_name="Clasificaciones", index=False)
-    df_top_directors.to_excel(writer, sheet_name="Top_Directores", index=False)
-    df_top_cast.to_excel(writer, sheet_name="Top_Actores", index=False)
+    # df_country_top.to_excel(writer, sheet_name="Top_Paises", index=False)
+    # df_added_by_year.to_excel(writer, sheet_name="Contenido_Por_Año", index=False)
+    # df_rating_count.to_excel(writer, sheet_name="Clasificaciones", index=False)
+    # df_top_directors.to_excel(writer, sheet_name="Top_Directores", index=False)
+    # df_top_cast.to_excel(writer, sheet_name="Top_Actores", index=False)
 
 print("Exportación completa a 'disney_data_summary.xlsx'")
