@@ -1,15 +1,7 @@
 import pandas as pd
 import psycopg2
 
-# 1. CONEXIÓN A SQL SERVER
-conn = psycopg2.connect(
-    host="server-disney-movies.postgres.database.azure.com",
-    database="bd_disney_movies",
-    user="useradm",
-    password="root123456A",
-    port=5432
-)
-
+# 1. CONEXIÓN A LA BASE DE DATOS
 # 2. CARGA DE DATOS DESDE SQL SERVER
 query = "SELECT * FROM movies"
 df = pd.read_sql(query, conn)
@@ -64,10 +56,10 @@ df_top_cast.columns = ['actor', 'count']
 
 with pd.ExcelWriter("disney_data_summary.xlsx", engine="openpyxl") as writer:
     df_type_count.to_excel(writer, sheet_name="Tipo_Contenido", index=False)
-    # df_country_top.to_excel(writer, sheet_name="Top_Paises", index=False)
-    # df_added_by_year.to_excel(writer, sheet_name="Contenido_Por_Año", index=False)
-    # df_rating_count.to_excel(writer, sheet_name="Clasificaciones", index=False)
-    # df_top_directors.to_excel(writer, sheet_name="Top_Directores", index=False)
-    # df_top_cast.to_excel(writer, sheet_name="Top_Actores", index=False)
+    df_country_top.to_excel(writer, sheet_name="Top_Paises", index=False)
+    df_added_by_year.to_excel(writer, sheet_name="Contenido_Por_Año", index=False)
+    df_rating_count.to_excel(writer, sheet_name="Clasificaciones", index=False)
+    df_top_directors.to_excel(writer, sheet_name="Top_Directores", index=False)
+    df_top_cast.to_excel(writer, sheet_name="Top_Actores", index=False)
 
 print("Exportación completa a 'disney_data_summary.xlsx'")
